@@ -1,0 +1,174 @@
+---
+title: "Pengaruh Pengangguran terhadap GDP Tahun 2022"
+subtitle: "Metode Penelitian Politeknik APP Jakarta"
+author: "Muhammad Dwi Ananda Wicaksono"
+date: 2024-01-21
+number-sections: true
+format:
+  html: default
+  docx: default
+---
+
+![    ](poltekapp.jpg)
+
+## Pendahuluan
+
+### Latar belakang
+
+Pengangguran merupakan salah satu masalah sosial ekonomi yang dihadapi oleh banyak negara, termasuk Indonesia. Pengangguran dapat didefinisikan sebagai keadaan di mana seseorang yang mampu dan ingin bekerja tidak mendapatkan pekerjaan yang sesuai dengan kualifikasi dan keinginannya. Pengangguran dapat disebabkan oleh berbagai faktor, seperti ketidakseimbangan antara penawaran dan permintaan tenaga kerja, rendahnya keterampilan dan pendidikan, kemajuan teknologi, dan kondisi perekonomian. Pengangguran juga dapat menimbulkan dampak negatif, seperti menurunnya pendapatan nasional, meningkatnya kemiskinan, kriminalitas, dan konflik sosial.
+
+Salah satu indikator yang digunakan untuk mengukur kinerja perekonomian suatu negara adalah Gross Domestic Product (GDP) atau Produk Domestik Bruto (PDB). GDP adalah nilai total dari barang dan jasa akhir yang dihasilkan oleh suatu negara dalam suatu periode tertentu. GDP dapat mencerminkan tingkat produksi, konsumsi, investasi, dan ekspor-impor suatu negara. GDP juga dapat dipengaruhi oleh faktor-faktor seperti pertumbuhan penduduk, inflasi, kebijakan pemerintah, dan kondisi global.
+
+Menurut hukum Okun, terdapat hubungan negatif antara tingkat pengangguran dan GDP. Artinya, semakin tinggi tingkat pengangguran, semakin rendah pertumbuhan GDP, dan sebaliknya. Hal ini karena pengangguran akan menyebabkan berkurangnya tenaga kerja yang berkontribusi dalam proses produksi, sehingga mengurangi output yang dihasilkan. Selain itu, pengangguran juga akan menurunkan daya beli masyarakat, sehingga mengurangi permintaan terhadap barang dan jasa. Akibatnya, aktivitas ekonomi akan menurun, dan GDP pun akan menurun.
+
+
+### Ruang lingkup
+
+Dalam penelitian ini peneliti menggunakan objek data yang di ambil melalui word bank berupa jumlah pengangguran dan (Gross Domestic Produk) GDP pada beberapa negara. Terdapat satu variabel independent yaitu pengangguran dan variabel dependen yaitu GDP yang diambil dari objek data yang telah diolah sedemikian rupa yang nantinya akan digunakan sebagai objek penelitian.
+
+### Rumusan masalah
+
+A.	Apakah pengangguran mempengaruhi GDP?
+
+B.	Bagaimana hubungan pengangguran terhadap GDP?
+
+### Tujuan dan manfaat penelitian
+
+Tujuan dari penelitian ini mengetahui hubungan antara tingkat pengangguran dan pertumbuhan ekonomi di Indonesia tahun 2022, menganalisis faktor-faktor yang mempengaruhi tingkat pengangguran dan pertumbuhan ekonomi di Indonesia tahun 2022. Serta memberikan rekomendasi kebijakan yang dapat mengurangi tingkat pengangguran dan meningkatkan pertumbuhan ekonomi di Indonesia tahun 2022.
+
+Manfaat penelitian ini memberikan kontribusi teoritis dan empiris dalam bidang ekonomi makro, khususnya mengenai isu pengangguran dan pertumbuhan ekonomi, memberikan informasi dan masukan bagi pemerintah, akademisi, dan masyarakat mengenai kondisi dan prospek pengangguran dan pertumbuhan ekonomi di Indonesia tahun 2022. Serta memberikan inspirasi dan motivasi bagi peneliti lain yang ingin melakukan penelitian serupa atau berkaitan dengan topik pengangguran dan pertumbuhan ekonomi.
+
+
+### Package
+
+ Packages yang digunakan antara lain sebagai berikut:
+
+```{r}
+#| warning: false
+#| echo: true
+library(tidyverse)
+library(readxl)
+library(writexl)
+library(dplyr)
+library(kableExtra)
+```
+
+## Studi pustaka
+
+**Pengangguran**
+
+Pengangguran adalah salah satu fenomena sosial yang disebabkan oleh ketiadaan atau kekurangan lapangan pekerjaan. Pengangguran sendiri merupakan keadaan dimana seseorang dalam usia produktif tidak sedang bekerja atau tidak memiliki pekerjaan. Pada dasarnya fenomena ini disebabkan karena adanya ketimpangan antara jumlah angkatan kerja atau pencari kerja dengan lapangan pekerjaan yang tersedia. Dalam kondisi pengangguran yang tinggi dapat menyebabkan kelesuan ekonomi pada suatu negara.
+
+Dari penyebabnya sendiri pengangguran dibedakan menjadi pengangguran sukarela (voluntary unemployment) dan pengangguran terpaksa (involuntary unemployment). Pengangguran sukarela sendiri bersifat sementara karena orang ingin mencari pekerjaan yang lebih baik atau lebih layak. Sedangkan pengangguran terpaksa terjadi ketika seseorang berada dalam usia produktif terpaksa untuk tidak bekerja padahal dia masih ingin bekerja.
+
+**GDP**
+
+GDP atau Produk Domestik Bruto adalah nilai barang atau jasa yang dihasilkan oleh suatu negara dalam periode tertentu, biasanya satu tahun. GDP adalah salah satu indikator untuk mengukur kesehatan ekonomi, kemajuan perekonomian, dan kinerja ekonomi suatu negara. GDP juga dapat digunakan untuk membandingkan perekonomian antarnegara atau antardaerah.
+
+Cara menghitung GDP adalah dengan menjumlahkan nilai barang dan jasa akhir yang dihasilkan oleh semua unit perekonomian di suatu negara. Rumusnya adalah:
+
+GDP=C+I+G+(X−M)
+
+Di mana:
+
+•	C adalah konsumsi pribadi
+
+•	I adalah investasi bisnis
+
+•	G adalah pengeluaran pemerintah
+
+•	X adalah ekspor
+
+•	M adalah impor
+
+
+## Metode penelitian
+
+### Data
+
+```{r}
+library(readxl)
+library(writexl)
+datdwi<-read.delim("clipboard")
+datdwi
+```
+
+
+Penelitian ini menggunakan data dari beberapa negara di dunia dalam periode tahun 2022. Peneliti mengelola data GDP dengan melakukan log pada data tersebut, dan menghasilkan data y yang nantinya akan dijadikan objek penelitian sebagai variabel dependen.
+
+```{r}
+library(readxl)
+datdwi<-read_excel("C:/METOPEL/dwi/datdwi.xlsx")
+head(datdwi)
+library("ggplot2")
+library("readxl")
+library("dplyr")
+ggplot(data=datdwi,aes(x=y,y=pengangguran))+
+  geom_point(color="#00688B",size=2)+
+  labs(title="hubungan pengangguran terhadap GDP",
+       x="GDP",
+       y="Pengangguran",
+       caption = "sumber: data.worldbank.org")+
+  theme_classic()
+```
+
+### Metode analisis
+
+Penelitian ini menggunakan regresi univariat dengan satu variabel independent. Penelitian ini dimaksud untuk mengetahui hubungan antara pengangguran terhadap GDP, dengan spesifikasi sebagai berikut:
+
+
+$$
+y_{t}=\beta_0 + \beta_1 x_t+\mu_t
+$$ di mana $y_t$ adalah GDP dan $x_t$ adalah Pengangguran.
+
+## Pembahasan
+
+### Pembahasan masalah
+
+Hasil regresi:
+
+|Coefficients | Estimate |    Pr    |
+|-------------|----------|----------|
+|Intercept    | 11.58571 | < 2e-16  |
+|pengangguran | -0.05681 | 0.000168 |
+
+Dari hasil tersebut, dimasukkan kedalam rumus dan mengasilkan:
+
+$$
+y_{t}=\  11.58571 - \  0.05681x+\mu_t
+$$
+
+Koefisien intersep (β0) sebesar 11.58571, yang berarti bahwa nilai y ketika pengangguran = 0 adalah 11.58571. Koefisien gradien (β1) sebesar -0.05681, yang berarti setiap kenaikan satu unit pengangguran akan menurunkan nilai GDP sebesar 0.05681.
+
+Peningkatan pengangguran dapat menyebabkan penurunan GDP. Hal ini dapat terjadi karena pengangguran akan mengurangi jumlah tenaga kerja yang tersedia, akibatnya produksi barang dan jasa akan berkurang dan membuat GDP dapat menurun.
+
+### Analisis masalah
+
+Hasil regresinya adalah
+
+```{r}
+library(readxl)
+datdwi<-read_excel("datdwi.xlsx")
+reg<-lm(y~pengangguran,data=datdwi)
+summary(reg)
+```
+
+Multiple R-squared:  0.06448, yang berarti bahwa hanya 6.448% variasi y yang dapat dijelaskan oleh variabel pengangguran. Sisanya 93.552% variasi y dipengaruhi oleh faktor-faktor lain yang tidak termasuk dalam model regresi ini. Nilai F hitung adalah 14.68 dan nilai p-value adalah 0.0001676. Karena p-value < 0.05, maka ada hubungan antara y dan pengangguran.
+
+## Kesimpulan
+
+Pengangguran memiliki pengaruh yang negatif terhadap GDP, maka semakin tinggi pengangguran, semakin rendah GDP. Sebaliknya semakin rendah pengangguran, semakin tinggi GDP. Namun disini pengangguran dan GDP memiliki hubungan yang lemah, pengangguran hanya 6.448% dapat menjelaskan variabel GDP, yang artinya masih banyak faktor-faktor lain yang perlu diperhatikan peneliti.
+
+GDP mencerminkan kesejahteraan ekonomi suatu negara, tetapi juga dipengaruhi oleh berbagai faktor. Selain pengangguran, beberapa faktor yang dapat mempengaruhi GDP seperti investasi, konsumsi rumahh tangga, ekspor, kebijakan pemerintahh, teknologi,serta stabilitas politik dan ekonomi.
+
+## Referensi
+
+Ariefta, R. R., & Woyanti, N. (2014). Analisis Pengaruh Pertumbuhan Penduduk, Inflasi, GDP, dan Upah Terhadap Tingkat Pengangguran di Indonesia Periode 1990-2010 (Doctoral dissertation, Fakultas Ekonomika dan Bisnis).
+
+Indayani, S., & Hartono, B. (2020). Analisis pengangguran dan pertumbuhan ekonomi sebagai akibat pandemi covid-19. Perspektif: Jurnal Ekonomi Dan Manajemen Akademi Bina Sarana Informatika, 18(2), 201-208.
+
+SEPTIATIN, A. A., MAWARDI, M. M., & RIZKI, M. A. K. (2016). Pengaruh Inflasi Dan Tingkat Pengangguran Terhadap Pertumbuhan Ekonomi Di Indonesia. I-Economics: A Research Journal On Islamic Economics, 2(1), 50-65.
+
+Paramita, A. I. D., & Purbadharmaja, I. P. (2015). Pengaruh investasi dan pengangguran terhadap pertumbuhan ekonomi serta kemiskinan di Provinsi Bali. E-Jurnal Ekonomi Pembangunan Universitas Udayana, 4(10), 44574.
+
+Arianto, C. E., Adenan, M., & Dwipayana, I. K. M. (2015). Pengaruh Jumlah Penduduk dan Angka Pengangguran Terhadap Pertumbuhan Ekonomi Kabupaten Jember.
